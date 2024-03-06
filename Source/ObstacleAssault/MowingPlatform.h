@@ -31,4 +31,5 @@ public:
 	
 	UPROPERTY(EditAnywhere)
 	bool MyBool=true;
+
 };
