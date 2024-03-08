@@ -25,20 +25,25 @@ void AMowingPlatform::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-		FVector LocalVector = MyVector;
-
-		LocalVector.Z = LocalVector.Z + 100;
-
-		MyVector.Y = MyVector.Y + 1;
-		
-		SetActorLocation(LocalVector);
-
 	  	// Mowe platform forwards
 				// Get current location
+
+				FVector CurrentLocation = GetActorLocation();
+				//add Vector to that location
+	      CurrentLocation = CurrentLocation + (PlatformVelocity * DeltaTime);
 				//set the location
+
+				SetActorLocation(CurrentLocation);
 			//Send platform back if gone too far
 				//Check how far we've mowed
 				//Reverse direction of motion if gone too far
 
+
+
+    // FVector LocalVector = MyVector;
+
+		// LocalVector.Z = LocalVector.Z + 100;
+
+		// MyVector.Y = MyVector.Y + 1;
 }
 
