@@ -16,7 +16,7 @@ void AMowingPlatform::BeginPlay()
 {
 	Super::BeginPlay();
 	
-	
+		StartLocation = GetActorLocation();
 
 }
 
@@ -32,18 +32,20 @@ void AMowingPlatform::Tick(float DeltaTime)
 				//add Vector to that location
 	      CurrentLocation = CurrentLocation + (PlatformVelocity * DeltaTime);
 				//set the location
-
 				SetActorLocation(CurrentLocation);
 			//Send platform back if gone too far
 				//Check how far we've mowed
+				float DistanceMowed = FVector::Dist(StartLocation, CurrentLocation);
 				//Reverse direction of motion if gone too far
 
+				if (DistanceMowed > MoveDistance)
+				{
+					FVector MoveDirection = PlatformVelocity.GetSafeNormal();
+					StartLocation = StartLocation + MoveDirection * MoveDistance;
+					SetActorLocation(StartLocation);
+					PlatformVelocity = -PlatformVelocity;
+				}
 
-
-    // FVector LocalVector = MyVector;
-
-		// LocalVector.Z = LocalVector.Z + 100;
-
-		// MyVector.Y = MyVector.Y + 1;
+			
 }
 

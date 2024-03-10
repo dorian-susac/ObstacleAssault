@@ -26,5 +26,9 @@ public:
 			UPROPERTY(EditAnywhere, Category="Mowing Platform")
 			FVector PlatformVelocity = FVector (100,0,0);
 
+			UPROPERTY(VisibleAnywhere, Category="Mowing Platform")
+			float MoveDistance = 100;
+			FVector StartLocation;
+
 			
 };
